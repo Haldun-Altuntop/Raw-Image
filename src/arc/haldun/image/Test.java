@@ -13,8 +13,42 @@ import java.io.IOException;
 public class Test {
 
     private static int imageIndex = 0;
+    private static ImageBundle bundle;
 
     public static void main(String[] args) throws IOException {
+
+        if (args[0].equals("add")) {
+            bundle = new ImageBundle(new File(args[1]));
+
+            BufferedImage bufferedImage = ImageIO.read(
+                    new File(args[2])
+            );
+
+            bundle.addImage(Utilities.convertToImage(bufferedImage));
+        }
+
+        if (args[0].equals("view")) {
+            bundle = new ImageBundle(new File(args[1]));
+            startFrame();
+        }
+
+
+
+
+
+        //Image image = Utilities.convertToImage(bufferedImage);
+        //Image image = Image.read(new File("test-image"));
+
+        //bundle.addImage(image);
+
+
+
+
+
+        //image.save(new File("test-image"));
+    }
+
+    private static void startFrame() throws IOException {
 
         JDialog dialog = new JDialog();
         dialog.setLocationRelativeTo(null);
@@ -26,15 +60,7 @@ public class Test {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
 
-        BufferedImage bufferedImage = ImageIO.read(
-                new File("/home/haldun-altuntop/Resimler/Fav Wallpaper 1920x1080.jpg")
-        );
-
-        //Image image = Utilities.convertToImage(bufferedImage);
-        //Image image = Image.read(new File("test-image"));
-
         ImageBundle bundle = new ImageBundle(new File("bundle"));
-        //bundle.addImage(image);
 
         Image image = bundle.getImage(imageIndex);
 
@@ -86,7 +112,5 @@ public class Test {
         });
 
         dialog.setVisible(false);
-
-        //image.save(new File("test-image"));
     }
 }
