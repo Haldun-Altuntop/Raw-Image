@@ -8,6 +8,10 @@ public class ImageHolder extends JPanel {
     private Image image;
     private int pixelSize = 1;
 
+    public ImageHolder() {
+
+    }
+
     public ImageHolder (Image image) {
         this.image = image;
 
@@ -37,5 +41,11 @@ public class ImageHolder extends JPanel {
                 g.fillRect(x, y, pixelSize, pixelSize);
             }
         }
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+        setPreferredSize(new Dimension(image.getWidth(), image.getHeight()));
+        repaint();
     }
 }
