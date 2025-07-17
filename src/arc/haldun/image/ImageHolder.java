@@ -50,7 +50,7 @@ public class ImageHolder extends JPanel {
         int yOffset = (panelH - drawH) / 2;
 
         // BufferedImage üret
-        BufferedImage bufferedImage = new BufferedImage(imgW, imgH, java.awt.image.BufferedImage.TYPE_INT_RGB);
+        BufferedImage bufferedImage = new BufferedImage(imgW, imgH, BufferedImage.TYPE_INT_RGB);
         int[] pixels = image.getPixels();
         bufferedImage.setRGB(0, 0, imgW, imgH, pixels, 0, imgW);
 
